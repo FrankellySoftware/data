@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- METADATA -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="follow">
+    <meta name="robots" content="index">
+    <meta name="description" content="{{info_page[3]}}">
+    <meta name="keywords" content="{{info_page[4]}}">
+
+    <title>{%block title%}{%endblock%} - {{info_page[0]}}</title>
+    <!-- Icon  -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename=info_page[1]) }}" type="image/x-icon">
+    <!-- ESTILOS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cards.css') }}">
+
+
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{url_for('index')}}">Inicio</a></li>
+                <li><a href="{{url_for('productos')}}">Productos</a></li>
+                <li><a href="{{url_for('contacto')}}">Contacto</a></li>
+                <li><a href="{{url_for('quienes_somos')}}">Quienes somos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="content-page">
+        {%block content%}
+
+        <!-- Here are the content of the block page -->
+
+        {%endblock%}
+    </div>
+
+
+    <footer>
+        <div class="footer-content">
+
+
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
+</body>
+
+</html>

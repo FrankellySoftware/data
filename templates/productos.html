@@ -1,0 +1,23 @@
+{% extends "./layout.html" %}
+
+{%block title %}Productos{% endblock %}
+
+
+{% block content %}
+
+<div class="product-list">
+    <div class="card-product">
+        {% for card in lista %}
+            <div class="card">
+                <h3 class="title">{{card[1]}}</h3>
+                <hr>
+                <img src="{{ url_for('static',filename=card[3]) }}" alt="" class="image-card">
+                <p class="price-card">{{card[2]}}</p>
+                <br>
+                <button class="button-card">Mas detalles</button>
+            </div>
+        {%endfor%}
+    </div>
+</div>
+
+{%endblock%}
