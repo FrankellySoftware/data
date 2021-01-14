@@ -1,0 +1,8 @@
+{% macro render_field(campo)%}
+
+    <td> {{campo.label}} </td>
+    <dd>
+        {{ campo(**kwargs) | safe }}
+    </dd>
+
+{% endmacro %}

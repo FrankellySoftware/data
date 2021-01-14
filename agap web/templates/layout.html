@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- TITULO -->
+    <title>{%block title%}{%endblock%} | AGAP CORPORATION BENCOSME </title>
+    <!-- ESTILOS -->
+    <link rel="stylesheet" href="url_for('static',filename='css/main.css')">
+    <!-- CDN -->
+
+</head>
+
+<body>
+    <header>
+        <ul class="menu">
+            <li><a href="{{url_for('index')}}">Inicio</a></li>
+            <li><a href="{{url_for('tienda')}}">Tienda</a></li>
+            <li><a href="{{url_for('acerca_de')}}">Acerca de nosotros</a>
+                <ul>
+                    <li><a href="{{url_for('clientes')}}">Clientes</a></li>
+                </ul>
+            </li>
+            <li><a href="{{url_for('contacto')}}">Contacto</a></li>
+        </ul>
+    </header>
+
+    <div class="main">
+        {%block content%}
+        <!-- AQUI SE HEDERARA EL HTML DE CADA PAGINA -->
+        {%endblock%}
+    </div>
+    <footer>
+
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- TITULO -->
+    <title>{%block title%}{%endblock%} | DETRAS DE LA OPINION</title>
+
+    <!-- CDN -->
+    <!-- BOOSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    
+    <!-- icons -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <!-- ESTILOS -->
+    <link rel="stylesheet" href="url_for('static',filename='css/main.css')">
+
+</head>
+
+<body>
+    <header>
+        <ul class="menu">
+            <li><a href="{{url_for('index')}}">Inicio</a></li>
+            <li><a href="{{url_for('post')}}">Post</a></li>
+            <li><a href="{{url_for('acerca_de')}}">Acerca de nosotros</a></li>
+            <li><a href="{{url_for('contacto')}}">Contacto</a></li>
+        </ul>
+    </header>
+
+    <div class="main">
+        {%block content%}
+        <!-- AQUI SE HEDERARA EL HTML DE CADA PAGINA -->
+        {%endblock%}
+    </div>
+    <footer>
+        <div>
+            <p class="copyright"> Detrás de la opinión &copy; {{fecha_footer}}. Todos los derechos reservados </p>
+        </div>
+        <div class="redes-sociales">
+            <a href="https://paypal.me/detrasdelaopinion" target="_blank"><i class="fab fa-cc-paypal" style="color: blue;width: 30px;"></i></i></a>
+            <a href="https://www.instagram.com/detrasdelaopinion/"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/channel/UCtTL4Vtltlo_pL1UhuwYg6w"><i class="fab fa-youtube"></i></a>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</body>
+
+</html>

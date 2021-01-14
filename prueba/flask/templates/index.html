@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% from "macro.html" import render_field %}
+
+
+{%block content%}
+    <form action="" method="POST">
+        <div class="form-group">
+            {{ render_field(form.userName) }}
+            {{ render_field(form.email) }}
+            {{ render_field(form.comment) }}
+            <input type="submit" class="btn btn-primary mb-2" value="Enviar">
+        </div> 
+       
+    </form>
+{%endblock%}
