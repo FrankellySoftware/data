@@ -3,7 +3,18 @@
 {%block title%} Publicaciones {%endblock%}  <!-- TITULO de la WEB -->
 
 {%block content%} 
-
-<h1>Post </h1>
-
+<div class="container">
+    <div class="cards">
+        {% for card in cards %}
+            <div class="card">
+                <img src="{{card['imagenes'][0]}}" alt="{{card['titulo']}}">
+                <div>
+                    <h3>{{card['titulo']}}</h3>
+                    <p>{{card['resumen']}}</p>
+                <a href="{{url_for('post')}}/{{card['titulo_url']}}">Mas info</a>
+                </div>
+            </div>
+        {%endfor%}
+    </div>
+</div>
 {%endblock%}

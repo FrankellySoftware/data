@@ -4,7 +4,9 @@ from pymongo import MongoClient
 
 """
 [
-    {
+    {   
+        id: 0,
+
         titulo_url: 'Adquisicion-americana',
 
         titulo:'Adquisicion americana',
