@@ -36,68 +36,52 @@ noticias = db.noticias
 
 
 
-i = noticias.find({})
-
-li = [] 
-id = 0
-for o in i:
-    li.append(int(o['id']))
-
-while id not in li:
-    print(id)
-    id += 1
-else:
-    print(f"aqui esta tu id {id}")
 
 
-
-# def jsonDB(id, titulo_url, titulo, resumen, descripcion, video, imagenes, fecha, relevante, oculto):
+def jsonDB(titulo, resumen, descripcion, video, imagenes, fecha, relevante, oculto):
     
-#     i = noticias.find({})
+    i = noticias.find({})
+    li = [] 
+    id = 0
+    for o in i:
+        li.append(int(o['id']))
 
-#     li = [] 
-#     id = 0
-#     for o in i:
-#         li.append(int(o['id']))
+    while id in li:
+        id += 1
 
-#     while id not in li:
-#         id += 1
-#     else:
-#         print(f"aqui esta tu id {id}")
+    titulo_url = titulo.replace(" "  ,  "-")
 
-#     a = {
-#         "id": id,
+    a = {
+        "id": id,
 
-#         "titulo_url": titulo_url,
+        "titulo_url": titulo_url.lower(),
 
-#         "titulo": titulo,
+        "titulo": titulo.capitalize(),
 
-#         "resumen": resumen,
+        "resumen": resumen,
 
-#         "descripcion": descripcion,
+        "descripcion": descripcion,
 
-#         "video": [video],
+        "video": [video],
 
-#         "imagenes": [imagenes],
+        "imagenes": [imagenes],
 
-#         "fecha": fecha,
+        "fecha": fecha,
 
-#         "relevante": relevante,
+        "relevante": relevante,
 
-#         "oculto": oculto
+        "oculto": oculto
 
-#     }
+    }
 
-#     noticias.insert_one(a)
+    noticias.insert_one(a)
 
 
-# while True:
-#     a = input('id')
-#     b = input('url')
-#     c = input('titulo')
-#     d = input('resumen')
-#     e = input('descripcion')
-#     f = input('video')
-#     g = input('imagenes')
+while True:
+    c = input('titulo: ')
+    d = input('resumen: ')
+    e = input('descripcion: ')
+    f = input('video: ')
+    g = input('imagenes: ')
 
-#     jsonDB(int(a), b, c, d, e, f, g, datetime.datetime.now().strftime('%d/%m/%Y') , False , True)
+    jsonDB( c, d, e, f, g, datetime.datetime.now().strftime('%d/%m/%Y') , False , True)

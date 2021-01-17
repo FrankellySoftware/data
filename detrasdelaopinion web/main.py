@@ -31,11 +31,11 @@ def datos_globales():
     return datos
 
 
-@app.context_processor
-def suma1():
-    def suma(n1, n2):
-        return n1+n2
-    return dict(suma=suma)
+# @app.context_processor
+# def suma1():
+#     def suma(n1, n2):
+#         return n1+n2
+#     return dict(suma=suma)
 
 
 # ========== Funciones GLOBALES 🌐 ===========
@@ -65,52 +65,13 @@ def error404(e):
 # ==========  PAGINA DE INICIO ===========
 @app.route("/")
 def index():
-    # noticias.insert_many(
-    #     [
-    #         {
-    #             "id": 0,
 
-    #             "titulo_url": 'Adquisicion-americana',
-
-    #             "titulo": 'Adquisicion americana',
-
-    #             "descripcion": 'dasasdafafas',
-
-    #             "video": ['http://youtube.com/video'],
-
-    #             "imagenes": [1, 2, 3, 4, 5, 6],
-
-    #             "fecha": 2021,
-
-    #             "oculto": 0,
-
-    #         },
-    #         {
-    #             "id": 1,
-
-    #             "titulo_url": 'prueba',
-
-    #             "titulo": 'Adquisicion americana',
-
-    #             "descripcion": 'dasasdafafas',
-
-    #             "video": ['http://youtube.com/video'],
-
-    #             "imagenes": [1, 2, 3, 4, 5, 6],
-
-    #             "fecha": 2021,
-
-    #             "oculto": 1,
-
-    #         }
-    #     ]
-    # )
     return render_template("index.html")
 
 # ========== PAGINA DE ACERCA DE NOSOTROS ===========
 
 
-@app.route("/about")
+@app.route("/acerca-de-nosotros")
 def acerca_de():
     return render_template("acerca_de.html")
 
