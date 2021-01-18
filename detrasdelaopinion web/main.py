@@ -14,7 +14,7 @@ app.config['SECRET_KEY'] = "fsdgsdashedgehertjdgbdfjndf"
 
 
 # ========== CONFIGURACION DE LA BBDD ===========
-host = MongoClient(host='127.0.0.1')
+host = MongoClient("mongodb+srv://frankellysoftware:Leon_crack2077@cluster0.bggvz.mongodb.net/DDLO?retryWrites=true&w=majority")
 db = host.get_database("DDLO")
 admin = db.admin
 noticias = db.noticias
