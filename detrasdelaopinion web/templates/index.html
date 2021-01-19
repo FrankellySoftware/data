@@ -1,9 +1,36 @@
 {% extends "./layout.html"%}
 
-{%block title%} Inicio {%endblock%}  <!-- TITULO de la WEB -->
+{%block title%} Inicio {%endblock%}
+<!-- TITULO de la WEB -->
 
-{%block content%} 
+{%block content%}
 
-<h1>Inicio </h1>
+<section class="noticias-relevantes">
+    <div class="noticias pt-md-5">
 
+        <div class="container">
+
+            <h1 class="text-white text-center py-md-3 py-5">Noticias Relevantes</h1>
+
+            <div class="row justify-content-center">
+
+                {%for a in relevantes%}
+                <div  class="col-md-4 pb-3" s-hover='1' data-wow-duration="1s" data-wow-delay="200ms" style="visibility: visible; animation-duration: 1s; animation-delay: 200ms; animation-name: fadeInLeft;">
+                    <a href=" {{url_for('post')}}/{{a['titulo_url']}} " class="text-dark d-block" title="{{a['titulo']}}">
+                        <img width="600" height="300" src="{{a['imagenes'][0]}}" class="img-fluid wp-post-image" alt="DDLO" loading="lazy">
+                    </a>
+                    <h6 class="text-center p-md-0 pt-md-3  p-3 text-dark bg-white ">{{a['titulo']}}</h6>
+
+                </div>
+                {%endfor%}
+
+            </div>
+        </div>
+
+        <div class="bg-gray text-center p-2 mt-6">
+            <a href="{{url_for('post')}}" class="btn btn-primary">Más noticias »</a>
+        </div>
+
+    </div>
+</section>
 {%endblock%}

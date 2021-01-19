@@ -34,7 +34,12 @@ noticias = db.noticias
 ]
 """
 
-
+#crear mi propia funcion en flask
+# @app.context_processor
+# def suma1():
+#     def suma(n1, n2):
+#         return n1+n2
+#     return dict(suma=suma)
 
 
 

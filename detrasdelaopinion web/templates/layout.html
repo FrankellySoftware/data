@@ -15,15 +15,18 @@
     <!-- icons -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <!-- ESTILOS -->
-    <link rel="stylesheet" href="url_for('static',filename='css/main.css')">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}">
 
 </head>
 
 <body>
     <header>
+        <div class="info-logo">
+            
+        </div>
         <ul class="menu">
             <li><a href="{{url_for('index')}}">Inicio</a></li>
-            <li><a href="{{url_for('post')}}">Post</a></li>
+            <li><a href="{{url_for('post')}}">Noticias</a></li>
             <li><a href="{{url_for('acerca_de')}}">Acerca de nosotros</a></li>
             <li><a href="{{url_for('contacto')}}">Contacto</a></li>
         </ul>

@@ -26,16 +26,9 @@ def datos_globales():
     datos = {
         # Esta variable se usara para enviar el tiempo a la template
         "fecha_footer": '2021 - {}'.format(datetime.datetime.utcnow().year),
-        '': ''
+        'url': request.url_root
     }
     return datos
-
-
-# @app.context_processor
-# def suma1():
-#     def suma(n1, n2):
-#         return n1+n2
-#     return dict(suma=suma)
 
 
 # ========== Funciones GLOBALES 🌐 ===========
@@ -49,7 +42,7 @@ def getTituloUrl(titulo):
 def getDocumentosBBDD():
     documentos = noticias.find(
         {}, {'_id': 0,'titulo_url': 1, 'titulo': 1, 'resumen': 1, 'imagenes': 1})
-    
+
     docs = []
 
     for i in documentos:
@@ -65,8 +58,9 @@ def error404(e):
 # ==========  PAGINA DE INICIO ===========
 @app.route("/")
 def index():
-
-    return render_template("index.html")
+    a = noticias.find({},limit=3)
+    
+    return render_template("index.html", relevantes = a)
 
 # ========== PAGINA DE ACERCA DE NOSOTROS ===========
 
@@ -77,7 +71,7 @@ def acerca_de():
 
 
 # ========== PAGINA DE POST ===========
-@app.route("/posts")
+@app.route("/noticias")
 def post():
     cards = getDocumentosBBDD()
     return render_template("post.html" ,cards = cards)
@@ -85,7 +79,7 @@ def post():
 
 # ========== noticia ===========
 
-@app.route("/posts/<titulo_url>")
+@app.route("/noticias/<titulo_url>")
 def noticia(titulo_url):
 
     # => retorna una Lista si exite el titulo en la base de datos, de lo contrario None
@@ -95,7 +89,9 @@ def noticia(titulo_url):
         """
                 ==========================INFORMACION============================
 
-                la variable 'documento' procediente del servidor, contiene la informacion de la Noticia solicitada. Esta variable es de tipo Json o Dict en Python y contiene las siguentes Claves:
+                la variable 'documento' procediente del servidor, contiene la informacion de la Noticia solicitada. 
+                Esta variable es de tipo Json o Dict en Python y contiene las siguentes Claves:
+                
                 - id
                 - titulo_url
                 - titulo
@@ -119,4 +115,4 @@ def contacto():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="10.0.0.50",debug=True)
