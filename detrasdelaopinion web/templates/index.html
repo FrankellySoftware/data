@@ -15,11 +15,11 @@
             <div class="row justify-content-center">
 
                 {%for a in relevantes%}
-                <div  class="col-md-4 pb-3" s-hover='1' data-wow-duration="1s" data-wow-delay="200ms" style="visibility: visible; animation-duration: 1s; animation-delay: 200ms; animation-name: fadeInLeft;">
-                    <a href=" {{url_for('post')}}/{{a['titulo_url']}} " class="text-dark d-block" title="{{a['titulo']}}">
+                <div  class="col-md-4 pb-3" s-hover='1'>
+                    <a href=" {{url_for('post')}}/{{a['titulo_url']}} " class="text-dark " title="{{a['titulo']}}">
                         <img width="600" height="300" src="{{a['imagenes'][0]}}" class="img-fluid wp-post-image" alt="DDLO" loading="lazy">
+                        <h6 class="text-center p-md-0 pt-md-3  p-3 text-dark bg-white ">{{a['titulo']}}</h6>
                     </a>
-                    <h6 class="text-center p-md-0 pt-md-3  p-3 text-dark bg-white ">{{a['titulo']}}</h6>
 
                 </div>
                 {%endfor%}

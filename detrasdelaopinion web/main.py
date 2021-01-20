@@ -1,7 +1,7 @@
 # pip install flask , flask-login , flask_mysql , gunicorn, pymongo
 import platform
 import json
-from pymongo import MongoClient
+from pymongo import MongoClient,errors
 import os
 import datetime
 from flask import render_template, request, redirect, url_for, Flask, flash
@@ -58,10 +58,11 @@ def error404(e):
 # ==========  PAGINA DE INICIO ===========
 @app.route("/")
 def index():
-    a = noticias.find({},limit=3)
-    
-    return render_template("index.html", relevantes = a)
-
+    try:
+        a = noticias.find({},limit=3)
+        return render_template("index.html", relevantes = a)
+    except errors.AutoReconnect:
+        return "<h1>Error al conectarse con el servidor - 500</h1>"
 # ========== PAGINA DE ACERCA DE NOSOTROS ===========
 
 

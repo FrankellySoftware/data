@@ -11,8 +11,16 @@
 /* =========  FOOTER ========= */
 
 footer{
-    display: flex;
+    position: relative;
+    bottom: 0;
+    height:300px ;
+    width: 100%;
+    color: #fff;
+    justify-content: center;
+    box-shadow: 1px 0px 0.5px #000;
+    background-color: #08091a;
 }
+
 
 
 
