@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,6 +20,7 @@
     <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}">
 
 </head>
+
 <body>
     <header>
         <div class="info-logo">
@@ -30,23 +32,31 @@
             <li><a class="menu" href="{{url_for('contacto')}}">Contacto</a></li>
         </ul>
     </header>
-    
-<!-- =======================CONTENIDO CENTRAL======================================================================================= -->
+
+    <!-- =======================CONTENIDO CENTRAL======================================================================================= -->
     <main>
-            {%block content%}
-                 <!-- AQUI SE HEDERARA EL HTML DE CADA PAGINA -->
-            {%endblock%}
+        {%block content%}
+        <!-- AQUI SE HEDERARA EL HTML DE CADA PAGINA -->
+        {%endblock%}
     </main>
 
 
-<!-- ============================Pie de pagina======================================================================================= -->
+    <!-- ============================Pie de pagina======================================================================================= -->
     <footer>
         <div class="subscribe-form">
-            <form novalidate='true' id="email-form">
-                <input type="email" value="" name="EMAIL" class="email" id="mc-email" placeholder="Email Address" required="">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                <p class="text-white">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <form method="POST" novalidate='true' id="email-form">
+                <input type="email" value="" name="EMAIL" class="email" id="mc-email" placeholder="Email Address"
+                    required="">
                 <input type="submit" class="enviar" name="subscribe" value="Subscribe">
                 <label for="mc-email" class="subscribe-message"></label>
-            </form>
+            
         </div>
         <!-- <div>
             <div class="info">
@@ -67,13 +77,14 @@
 
 
 
-<!-- =============================JavaScript=========================================================================================== -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
-crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"
-integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-<script src="{{url_for('static',filename='js/main.js')}}"></script>
-<script src="{{url_for('static',filename='js/ajax.js')}}"></script>
+    <!-- =============================JavaScript=========================================================================================== -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="{{url_for('static',filename='js/main.js')}}"></script>
+    <script src="{{url_for('static',filename='js/ajax.js')}}"></script>
 </body>
+
 </html>

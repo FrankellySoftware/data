@@ -15,8 +15,8 @@ $(document).ready(function(){
         })
     }
 
-    $('#email-form').submit(function(){
-        console.log("wooo");
+    $('#email-form').submit(function(e){
+        // e.eventDefault()
         mail();
     })
 

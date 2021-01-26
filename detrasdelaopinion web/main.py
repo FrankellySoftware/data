@@ -1,6 +1,6 @@
 # pip install flask , flask-login , flask_mysql , gunicorn, pymongo
 import platform
-import json
+import json,time
 import socket
 from pymongo import MongoClient, errors
 import os
@@ -16,7 +16,8 @@ app.config['SECRET_KEY'] = "fsdgsdashedgehertjdgbdfjndf"
 
 # ========== CONFIGURACION DE LA BBDD ===========
 host = MongoClient(
-    "mongodb+srv://frankellysoftware:Leon_crack2077@cluster0.bggvz.mongodb.net/DDLO?retryWrites=true&w=majority")
+    "mongodb+srv://frankellysoftware:Leon_crack2077@cluster0.bggvz.mongodb.net/DDLO?retryWrites=true&w=majority"
+    )
 db = host.get_database("DDLO")
 suscription = db.suscripciones
 noticias = db.noticias
@@ -60,16 +61,16 @@ def error404(e):
 
 
 # ==========  PAGINA DE INICIO ===========
-@app.route("/")
+@app.route("/",methods=["POST","GET"])
 def index():
     try:
         a = noticias.find({}, limit=3)
         return render_template("index.html", relevantes=a)
     except errors.AutoReconnect:
         return "<h1>Error al conectarse con el servidor - 500</h1>"
+
+
 # ========== PAGINA DE ACERCA DE NOSOTROS ===========
-
-
 @app.route("/acerca-de-nosotros")
 def acerca_de():
     return render_template("acerca_de.html")
@@ -82,8 +83,8 @@ def post():
     return render_template("post.html", cards=cards)
 
 
-# ========== noticia ===========
 
+# ========== noticia ===========
 @app.route("/noticias/<titulo_url>")
 def noticia(titulo_url):
 
@@ -93,7 +94,6 @@ def noticia(titulo_url):
     if a is not None:
         """
                 ==========================INFORMACION============================
-
                 la variable 'documento' procediente del servidor, contiene la informacion de la Noticia solicitada. 
                 Esta variable es de tipo Json o Dict en Python y contiene las siguentes Claves:
 
@@ -126,16 +126,22 @@ def appAJAX():
         data = request.form['EMAIL']
         response = {'correo': data,
                     'fecha': datetime.datetime.now().strftime('%d/%m/%Y')}
+        emails = []
 
         for mail in suscription.find({}):
-            if mail['correo'] == data:
-                flash('El correo "%s" ya existe en nuestra base de datos.')
-                print('Existe el correo')
-                break
-            else:
-                suscription.insert_one(response)
+            emails.append(mail['correo'])
 
-        return jsonify(response)
+        if data in emails:
+            a = False
+            flash('El correo "%s" ya existe en nuestra base de datos.' %data)
+            print('Existe el correo')
+        else:
+            a = True
+            suscription.insert_one(response)
+            flash('You were successfully logged in')
+            return redirect(url_for('index'),flash("ok"))
+
+        return jsonify({'user':a})
 
 
 if __name__ == "__main__":
